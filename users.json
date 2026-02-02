@@ -1,0 +1,11 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "email": "demo@aitrader.chiel",
+      "password": "Tr@d3r$ecur3!2024#Str0ng",
+      "name": "Demo User",
+      "created_at": "2026-01-30T18:18:20.537835"
+    }
+  ]
+}
