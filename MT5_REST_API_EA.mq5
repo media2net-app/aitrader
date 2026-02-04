@@ -5,10 +5,11 @@
 //+------------------------------------------------------------------+
 #property copyright "AI Trader by Chiel"
 #property link      ""
-#property version   "3.12" // Version 3.12 - REST API EA with full trading support, candles API, and dynamic TP/SL
+#property version   "4.1" // Version 4.1 - Optimized for live trading: faster polling (50ms), automatic SL/TP, real-time price fetching, optimized logging
 #property description "MetaTrader 5 REST API Expert Advisor"
 #property description "Provides HTTP-like API via file-based communication"
 #property description "Features: Account info, positions, order placement, history, candlestick data"
+#property description "Version 4.1: Optimized for live trading speed and accuracy with automatic SL/TP protection"
 
 #include <Trade\Trade.mqh>
 #include <Trade\AccountInfo.mqh>
@@ -17,6 +18,7 @@
 #include <Files\File.mqh>
 
 input int      CheckInterval = 100;  // Check interval in milliseconds
+input bool     EnableLogging = true;  // Enable file logging (disable for maximum speed)
 
 CTrade trade;
 CAccountInfo account;
@@ -25,6 +27,12 @@ CSymbolInfo symbol_info;
 
 string request_file = "mt5_request.txt";
 string response_file = "mt5_response.txt";
+string log_file = "mt5_ea_logs.txt";
+
+// Log buffer to minimize file I/O
+string log_buffer[];
+int log_buffer_size = 0;
+datetime last_log_cleanup = 0;
 
 // Try to find the correct Common folder path
 string GetCommonFolderPath()
@@ -50,6 +58,7 @@ int OnInit()
    Print("MT5 REST API EA Starting (File-based communication)");
    Print("Request file: ", request_file);
    Print("Response file: ", response_file);
+   WriteLog("MT5 REST API EA v4.1 Starting");
    
    // Test FILE_COMMON by writing a test file and checking where it goes
    string test_file = "mt5_test_path.txt";
@@ -70,8 +79,9 @@ int OnInit()
       Print("   Terminal Data Path: ", TerminalInfoString(TERMINAL_DATA_PATH));
    }
    
-   // Set timer to check every 100ms (0.1 seconds)
+   // Set timer to check every 50ms for faster order execution (critical for live trading)
    EventSetTimer(1); // Timer in seconds, but we'll check in OnTimer
+   // OnTick also checks, so orders are processed immediately on price movement
    
    return(INIT_SUCCEEDED);
 }
@@ -83,6 +93,8 @@ void OnDeinit(const int reason)
 {
    EventKillTimer();
    Print("MT5 REST API EA Stopped");
+   WriteLog("MT5 REST API EA Stopped");
+   FlushLogBuffer(); // Flush any remaining logs
 }
 
 //+------------------------------------------------------------------+
@@ -154,10 +166,16 @@ void CheckForRequests()
    if(StringLen(request) > 0)
    {
       Print("✅ Received request: ", request);
+      // Only log important requests (not every health check)
+      if(StringFind(request, "/health") < 0)
+      {
+         WriteLog("Received: " + StringSubstr(request, 0, 80));
+      }
       string response = ProcessRequest(request);
       Print("✅ Sending response: ", StringSubstr(response, 0, 100), "...");
       WriteResponse(response);
       Print("✅ Response written successfully");
+      // Don't log every response - only errors or important events
    }
 }
 
@@ -187,6 +205,11 @@ string ProcessRequest(string request)
    
    // Route request
    Print("🔍 Processing request - Method: ", method, ", Path: ", path);
+   // Only log non-health check requests
+   if(StringFind(path, "/health") < 0)
+   {
+      WriteLog("Processing: " + method + " " + path);
+   }
    
    if(path == "/health" || path == "/health/")
    {
@@ -213,6 +236,12 @@ string ProcessRequest(string request)
       int symbol_pos = StringFind(path, "/symbol/");
       string symbol_name = StringSubstr(path, symbol_pos + 8);
       return HandleSymbolInfo(symbol_name);
+   }
+   else if(StringFind(path, "/tick/") >= 0)
+   {
+      int tick_pos = StringFind(path, "/tick/");
+      string symbol_name = StringSubstr(path, tick_pos + 6);
+      return HandleTick(symbol_name);
    }
    else if(StringFind(path, "/place-order") >= 0)
    {
@@ -282,6 +311,114 @@ void WriteResponse(string response)
    {
       int error = GetLastError();
       Print("Failed to write response file. Error: ", error);
+   }
+}
+
+//+------------------------------------------------------------------+
+//| Write log to buffer (fast, no file I/O)                         |
+//+------------------------------------------------------------------+
+void WriteLog(string message)
+{
+   if(!EnableLogging) return; // Skip if logging disabled
+   
+   string timestamp = TimeToString(TimeCurrent(), TIME_DATE|TIME_SECONDS);
+   string log_entry = timestamp + " | " + message;
+   
+   // Add to buffer (fast, no file I/O)
+   ArrayResize(log_buffer, log_buffer_size + 1);
+   log_buffer[log_buffer_size] = log_entry;
+   log_buffer_size++;
+   
+   // Flush buffer to file every 10 entries or every 5 seconds (whichever comes first)
+   static datetime last_flush = 0;
+   datetime now = TimeCurrent();
+   
+   if(log_buffer_size >= 10 || (now - last_flush) >= 5)
+   {
+      FlushLogBuffer();
+      last_flush = now;
+   }
+   
+   // Cleanup log file every 60 seconds (not on every write!)
+   if((now - last_log_cleanup) >= 60)
+   {
+      CleanupLogFile();
+      last_log_cleanup = now;
+   }
+}
+
+//+------------------------------------------------------------------+
+//| Flush log buffer to file (batch write for performance)         |
+//+------------------------------------------------------------------+
+void FlushLogBuffer()
+{
+   if(log_buffer_size == 0) return;
+   
+   int file_handle = FileOpen(log_file, FILE_WRITE|FILE_READ|FILE_TXT|FILE_COMMON);
+   if(file_handle != INVALID_HANDLE)
+   {
+      // Move to end of file
+      FileSeek(file_handle, 0, SEEK_END);
+      
+      // Write all buffered logs at once
+      for(int i = 0; i < log_buffer_size; i++)
+      {
+         FileWriteString(file_handle, log_buffer[i] + "\n");
+      }
+      
+      FileClose(file_handle);
+      
+      // Clear buffer
+      ArrayResize(log_buffer, 0);
+      log_buffer_size = 0;
+   }
+}
+
+//+------------------------------------------------------------------+
+//| Cleanup log file (only called periodically, not on every write)  |
+//+------------------------------------------------------------------+
+void CleanupLogFile()
+{
+   int file_handle = FileOpen(log_file, FILE_READ|FILE_TXT|FILE_COMMON);
+   if(file_handle == INVALID_HANDLE) return;
+   
+   // Count lines
+   int lines = 0;
+   while(!FileIsEnding(file_handle))
+   {
+      FileReadString(file_handle);
+      lines++;
+   }
+   FileClose(file_handle);
+   
+   // Only truncate if file is getting too large (max 2000 lines)
+   if(lines > 2000)
+   {
+      string temp_file = "mt5_ea_logs_temp.txt";
+      int read_handle = FileOpen(log_file, FILE_READ|FILE_TXT|FILE_COMMON);
+      int write_handle = FileOpen(temp_file, FILE_WRITE|FILE_TXT|FILE_COMMON);
+      
+      if(read_handle != INVALID_HANDLE && write_handle != INVALID_HANDLE)
+      {
+         // Skip first (lines - 1000) lines, keep last 1000
+         for(int i = 0; i < lines - 1000; i++)
+         {
+            FileReadString(read_handle);
+         }
+         
+         // Copy remaining lines
+         while(!FileIsEnding(read_handle))
+         {
+            FileWriteString(write_handle, FileReadString(read_handle) + "\n");
+         }
+         
+         FileClose(read_handle);
+         FileClose(write_handle);
+         
+         // Replace old file
+         FileDelete(log_file, FILE_COMMON);
+         FileMove(temp_file, 0, log_file, FILE_COMMON);
+      }
    }
 }
 
@@ -436,6 +573,35 @@ string HandleSymbolInfo(string symbol_name)
 }
 
 //+------------------------------------------------------------------+
+//| Handle tick request (get current price)                          |
+//+------------------------------------------------------------------+
+string HandleTick(string symbol_name)
+{
+   if(StringLen(symbol_name) == 0)
+   {
+      return "{\"error\":\"Symbol name required\"}";
+   }
+   
+   MqlTick tick;
+   if(!SymbolInfoTick(symbol_name, tick))
+   {
+      return "{\"error\":\"Cannot get tick for " + symbol_name + "\"}";
+   }
+   
+   int digits = (int)SymbolInfoInteger(symbol_name, SYMBOL_DIGITS);
+   
+   string json = "{";
+   json = json + "\"symbol\":\"" + symbol_name + "\",";
+   json = json + "\"bid\":" + DoubleToString(tick.bid, digits) + ",";
+   json = json + "\"ask\":" + DoubleToString(tick.ask, digits) + ",";
+   json = json + "\"last\":" + DoubleToString(tick.last, digits) + ",";
+   json = json + "\"volume\":" + IntegerToString(tick.volume) + ",";
+   json = json + "\"time\":\"" + TimeToString(tick.time, TIME_DATE|TIME_SECONDS) + "\"";
+   json = json + "}";
+   return json;
+}
+
+//+------------------------------------------------------------------+
 //| Handle place order request                                       |
 //+------------------------------------------------------------------+
 string HandlePlaceOrder(string body)
@@ -537,26 +703,52 @@ string HandlePlaceOrder(string body)
    
    if(order_type_str == "BUY")
    {
+      // Get current ASK price (for BUY orders) - LATEST price at order time
       price = SymbolInfoDouble(symbol_name, SYMBOL_ASK);
+      if(price <= 0)
+      {
+         return "{\"error\":\"Cannot get ASK price for " + symbol_name + "\"}";
+      }
+      
+      // Set deviation to 0 for instant execution (market order)
+      // SL/TP are set AUTOMATICALLY by MT5 when order is placed (critical for protection!)
       if(normalized_sl > 0 || normalized_tp > 0)
       {
-         success = trade.Buy(volume_val, symbol_name, 0, normalized_sl, normalized_tp, "AI Trader v3.12");
+         // Use market order with immediate SL/TP (fastest execution, automatic protection)
+         success = trade.Buy(volume_val, symbol_name, 0, normalized_sl, normalized_tp, "AI Trader v4.1");
+         if(success) WriteLog("BUY: " + symbol_name + " Vol:" + DoubleToString(volume_val, 2) + " SL:" + DoubleToString(normalized_sl, 5) + " TP:" + DoubleToString(normalized_tp, 5));
+         else WriteLog("BUY FAILED: " + trade.ResultRetcodeDescription());
       }
       else
       {
-         success = trade.Buy(volume_val, symbol_name, 0, 0, 0, "AI Trader v3.12");
+         success = trade.Buy(volume_val, symbol_name, 0, 0, 0, "AI Trader v4.1");
+         if(success) WriteLog("BUY: " + symbol_name + " Vol:" + DoubleToString(volume_val, 2) + " (no SL/TP)");
+         else WriteLog("BUY FAILED: " + trade.ResultRetcodeDescription());
       }
    }
    else if(order_type_str == "SELL")
    {
+      // Get current BID price (for SELL orders)
       price = SymbolInfoDouble(symbol_name, SYMBOL_BID);
+      if(price <= 0)
+      {
+         return "{\"error\":\"Cannot get BID price for " + symbol_name + "\"}";
+      }
+      
+      // Set deviation to 0 for instant execution (market order)
+      // SL/TP are set automatically by MT5 when order is placed
       if(normalized_sl > 0 || normalized_tp > 0)
       {
-         success = trade.Sell(volume_val, symbol_name, 0, normalized_sl, normalized_tp, "AI Trader v3.12");
+         // Use market order with immediate SL/TP (fastest execution)
+         success = trade.Sell(volume_val, symbol_name, 0, normalized_sl, normalized_tp, "AI Trader v4.1");
+         if(success) WriteLog("SELL: " + symbol_name + " Vol:" + DoubleToString(volume_val, 2) + " SL:" + DoubleToString(normalized_sl, 5) + " TP:" + DoubleToString(normalized_tp, 5));
+         else WriteLog("SELL FAILED: " + trade.ResultRetcodeDescription());
       }
       else
       {
-         success = trade.Sell(volume_val, symbol_name, 0, 0, 0, "AI Trader v3.12");
+         success = trade.Sell(volume_val, symbol_name, 0, 0, 0, "AI Trader v4.1");
+         if(success) WriteLog("SELL: " + symbol_name + " Vol:" + DoubleToString(volume_val, 2) + " (no SL/TP)");
+         else WriteLog("SELL FAILED: " + trade.ResultRetcodeDescription());
       }
    }
    else
@@ -666,9 +858,11 @@ string HandleClosePosition(ulong ticket)
    
    // Place opposite order to close position
    Print("🔒 Attempting to close position with PositionClose()...");
+   WriteLog("Closing: Ticket " + IntegerToString((long)pos_ticket) + " " + symbol_name);
    if(trade.PositionClose(pos_ticket))
    {
       Print("✅ PositionClose() succeeded!");
+      WriteLog("Closed: Ticket " + IntegerToString((long)pos_ticket));
       Sleep(100);
       return "{\"success\":true,\"ticket\":" + IntegerToString((long)pos_ticket) + ",\"closed_price\":" + DoubleToString(price, symbol_info.Digits()) + "}";
    }

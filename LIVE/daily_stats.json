@@ -1,0 +1,20 @@
+{
+  "2026-02-03": {
+    "trades_count": 0,
+    "total_pnl": 0.0,
+    "winning_trades": 0,
+    "losing_trades": 0,
+    "max_drawdown": 0.0,
+    "starting_balance": 131647.42,
+    "current_balance": 0.0
+  },
+  "2026-02-04": {
+    "trades_count": 0,
+    "total_pnl": 0.0,
+    "winning_trades": 0,
+    "losing_trades": 0,
+    "max_drawdown": 0.0,
+    "starting_balance": 131647.42,
+    "current_balance": 131647.42
+  }
+}

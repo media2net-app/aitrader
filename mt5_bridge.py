@@ -115,10 +115,11 @@ def send_request(request_line, body=""):
             print(f"❌ CRITICAL: Failed to write request to ANY location!")
             raise Exception("Could not write request file to any Common folder location")
         
-        # Wait for response (max 5 seconds) - check all locations
-        max_wait = 50  # 50 * 0.1 = 5 seconds
+        # Wait for response (max 2 seconds for trading speed) - check all locations
+        # Reduced from 0.1s to 0.05s polling for faster response (critical for live trading)
+        max_wait = 40  # 40 * 0.05 = 2 seconds (faster than before)
         for _ in range(max_wait):
-            time.sleep(0.1)
+            time.sleep(0.05)  # 50ms polling instead of 100ms
             for common_path in common_paths:
                 response_path = os.path.join(common_path, RESPONSE_FILE)
                 if os.path.exists(response_path):
@@ -358,6 +359,98 @@ def get_candles_ea(symbol, timeframe, count):
             return jsonify({'error': 'MT5 EA not responding'}), 503
     except Exception as e:
         return jsonify({'error': str(e)}), 500
+
+@app.route('/tick/<symbol>', methods=['GET'])
+def get_tick(symbol):
+    """Get current tick/price for a symbol"""
+    try:
+        response = send_request(f"GET /tick/{symbol}")
+        if response:
+            try:
+                return jsonify(json.loads(response))
+            except:
+                return jsonify({'error': 'Invalid JSON response', 'raw': response}), 500
+        else:
+            return jsonify({'error': 'MT5 EA not responding'}), 503
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+@app.route('/logs', methods=['GET'])
+def get_ea_logs():
+    """Get EA logs from log file"""
+    try:
+        log_file_path = os.path.join(COMMON_FOLDER, "mt5_ea_logs.txt")
+        
+        if not os.path.exists(log_file_path):
+            return jsonify({'logs': [], 'message': 'No logs file found yet'})
+        
+        # Read last N lines (default 100)
+        lines_to_read = request.args.get('lines', type=int, default=100)
+        
+        # Read file - MQL5 writes in UTF-16, so we need to handle that
+        try:
+            # Try reading as UTF-16 first (MQL5 default)
+            with open(log_file_path, 'rb') as f:
+                data = f.read()
+                # Check for UTF-16 BOM (FF FE)
+                if data.startswith(b'\xff\xfe'):
+                    # UTF-16 LE
+                    content = data[2:].decode('utf-16-le', errors='ignore')
+                elif data.startswith(b'\xfe\xff'):
+                    # UTF-16 BE
+                    content = data[2:].decode('utf-16-be', errors='ignore')
+                else:
+                    # Try UTF-16 LE without BOM
+                    try:
+                        content = data.decode('utf-16-le', errors='ignore')
+                    except:
+                        # Fallback to UTF-8
+                        content = data.decode('utf-8', errors='ignore')
+        except:
+            # Fallback to UTF-8
+            with open(log_file_path, 'r', encoding='utf-8', errors='ignore') as f:
+                content = f.read()
+        
+        # Split into lines and get last N lines
+        all_lines = content.split('\n')
+        logs = all_lines[-lines_to_read:] if len(all_lines) > lines_to_read else all_lines
+        
+        # Parse logs into structured format - FILTER empty lines and null characters
+        parsed_logs = []
+        for log_line in logs:
+            # Remove null characters and strip
+            log_line = log_line.replace('\x00', '').replace('\u0000', '').strip()
+            
+            # Skip empty lines, lines with only whitespace, or lines that are just newlines
+            if not log_line or len(log_line) == 0 or log_line == '\n' or log_line == '\r\n':
+                continue
+            
+            # Format: "2026.02.03 23:27:29 | Message"
+            parts = log_line.split(' | ', 1)
+            if len(parts) == 2:
+                # Only add if both timestamp and message are not empty
+                timestamp = parts[0].strip().replace('\x00', '').replace('\u0000', '')
+                message = parts[1].strip().replace('\x00', '').replace('\u0000', '')
+                if timestamp and message and len(timestamp) > 0 and len(message) > 0:
+                    parsed_logs.append({
+                        'timestamp': timestamp,
+                        'message': message
+                    })
+            elif log_line and log_line.strip():  # If no separator but has content
+                message = log_line.strip().replace('\x00', '').replace('\u0000', '')
+                if message and len(message) > 0:  # Only add if message is not empty
+                    parsed_logs.append({
+                        'timestamp': '',
+                        'message': message
+                    })
+        
+        return jsonify({
+            'logs': parsed_logs,
+            'total_lines': len(all_lines),
+            'returned_lines': len(parsed_logs)
+        })
+    except Exception as e:
+        return jsonify({'error': str(e), 'logs': []}), 500
 
 if __name__ == '__main__':
     print("🌉 MT5 REST API Bridge starting (File-based communication)...")

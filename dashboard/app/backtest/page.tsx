@@ -355,7 +355,6 @@ export default function BacktestPage() {
               <h2 className="text-xl font-bold">Error</h2>
             </div>
             <p className="text-gray-300">{results.error}</p>
-            {results.message && <p className="text-gray-400 mt-2">{results.message}</p>}
           </div>
         )}
       </div>

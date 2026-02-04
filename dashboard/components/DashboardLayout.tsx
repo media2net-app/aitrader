@@ -75,6 +75,15 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     return null;
   }
 
+  // Fullscreen layout for live-trader page and root page (no sidebar, no topbar)
+  if (pathname === '/live-trader' || pathname === '/') {
+    return (
+      <div className="min-h-screen w-full">
+        {children}
+      </div>
+    );
+  }
+
   return (
     <div className="flex flex-col min-h-screen">
       {/* Topbar with Market Hours - Above everything */}

@@ -115,12 +115,13 @@ export default function StrategyPage() {
   ];
 
   const renderCandlestick = (pattern: any, isExample: boolean = false) => {
-    if (pattern.prev && pattern.curr) {
+    const example = pattern.example || pattern;
+    if (example.prev && example.curr) {
       // Engulfing pattern - show 2 candles
-      const prevIsBullish = pattern.prev.close > pattern.prev.open;
-      const currIsBullish = pattern.curr.close > pattern.curr.open;
-      const prevBody = Math.abs(pattern.prev.close - pattern.prev.open);
-      const currBody = Math.abs(pattern.curr.close - pattern.curr.open);
+      const prevIsBullish = example.prev.close > example.prev.open;
+      const currIsBullish = example.curr.close > example.curr.open;
+      const prevBody = Math.abs(example.prev.close - example.prev.open);
+      const currBody = Math.abs(example.curr.close - example.curr.open);
       
       return (
         <div className="flex items-end space-x-3 h-32">
@@ -442,7 +443,7 @@ export default function StrategyPage() {
                       </div>
                     </div>
                     
-                    {pattern.example && !pattern.prev && (
+                    {pattern.example && !pattern.example.prev && (
                       <div className="mt-4 p-4 bg-white/5 rounded-lg">
                         <div className="text-sm font-semibold text-gray-400 mb-2">Voorbeeld:</div>
                         <div className="grid grid-cols-4 gap-4 text-sm">

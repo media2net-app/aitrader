@@ -83,8 +83,18 @@ class BacktestingEngine:
         print()
         
         # Haal historische data op
-        # Voor H1: ongeveer 24 candles per dag, dus days * 24
-        count = days * 24
+        # Calculate candles needed based on timeframe
+        candles_per_day = {
+            'M1': 1440,   # 1 minute: 1440 candles per day
+            'M5': 288,    # 5 minutes: 288 candles per day
+            'M15': 96,    # 15 minutes: 96 candles per day
+            'H1': 24,     # 1 hour: 24 candles per day
+            'H4': 6,      # 4 hours: 6 candles per day
+            'D1': 1       # 1 day: 1 candle per day
+        }
+        
+        candles_per_day_count = candles_per_day.get(timeframe.upper(), 24)  # Default to H1
+        count = days * candles_per_day_count
         if count > 1000:
             count = 1000  # Max 1000 candles
         
@@ -131,12 +141,12 @@ class BacktestingEngine:
             analysis_candles = self.current_candles[-100:] if len(self.current_candles) > 100 else self.current_candles
             
             try:
-                # Simuleer candlestick data voor strategie
-                # Strategie verwacht candles in specifiek format
+                # Generate signal using strategy with timeframe support
+                # Convert candles to format expected by strategy
                 signal_data = self.strategy.generate_signal_from_chart(
                     symbol=symbol,
                     timeframe=timeframe,
-                    count=len(analysis_candles)
+                    count=min(len(analysis_candles), 100)  # Limit to 100 for performance
                 )
                 
                 signal = signal_data.get('signal')
@@ -294,11 +304,13 @@ if __name__ == "__main__":
     print()
     
     strategy = TradingStrategy()
-    engine = BacktestingEngine(strategy, initial_balance=100000.0)
+    engine = BacktestingEngine(strategy, initial_balance=100.0)  # Start with $100 for live trading scenario
     
+    # Test M5 timeframe (recommended for live trading)
+    print("Testing M5 timeframe (recommended for live trading)...")
     results = engine.run_backtest(
         symbol="XAUUSD",
-        timeframe="H1",
+        timeframe="M5",
         days=7,  # Test met 7 dagen
         volume=0.20
     )

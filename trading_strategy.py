@@ -27,6 +27,69 @@ class TradingStrategy:
         self.confidence_threshold = self.parameters.get('confidence_threshold', 60)
         self.risk_reward_ratio = self.parameters.get('risk_reward_ratio', 2.0)
     
+    def get_timeframe_parameters(self, timeframe: str) -> Dict:
+        """
+        Get timeframe-specific indicator parameters
+        Returns optimal parameters for different timeframes
+        """
+        timeframe = timeframe.upper()
+        
+        if timeframe in ['M1', '1M']:
+            # 1 minute: very short periods
+            return {
+                'sma_short': 5,
+                'sma_long': 15,
+                'ema_fast': 5,
+                'ema_slow': 13,
+                'rsi_period': 7,
+                'sr_lookback': 15,
+                'min_candles': 20
+            }
+        elif timeframe in ['M5', '5M']:
+            # 5 minute: shorter periods for faster signals
+            return {
+                'sma_short': 10,
+                'sma_long': 20,
+                'ema_fast': 8,
+                'ema_slow': 21,
+                'rsi_period': 9,
+                'sr_lookback': 25,
+                'min_candles': 30
+            }
+        elif timeframe in ['M15', '15M']:
+            # 15 minute: balanced periods
+            return {
+                'sma_short': 15,
+                'sma_long': 30,
+                'ema_fast': 12,
+                'ema_slow': 26,
+                'rsi_period': 14,
+                'sr_lookback': 40,
+                'min_candles': 50
+            }
+        elif timeframe in ['H1', '1H']:
+            # 1 hour: standard periods (default)
+            return {
+                'sma_short': 20,
+                'sma_long': 50,
+                'ema_fast': 12,
+                'ema_slow': 26,
+                'rsi_period': 14,
+                'sr_lookback': 50,
+                'min_candles': 50
+            }
+        else:
+            # Default to H1 parameters
+            return {
+                'sma_short': 20,
+                'sma_long': 50,
+                'ema_fast': 12,
+                'ema_slow': 26,
+                'rsi_period': 14,
+                'sr_lookback': 50,
+                'min_candles': 50
+            }
+    
     def get_candlestick_data(self, symbol: str = "XAUUSD", timeframe: str = "H1", count: int = 100) -> List[Dict]:
         """Get real candlestick/OHLC data from MT5"""
         try:
@@ -139,11 +202,16 @@ class TradingStrategy:
             'histogram': histogram
         }
     
-    def detect_support_resistance(self, candles: List[Dict], lookback: int = 20) -> Dict:
+    def detect_support_resistance(self, candles: List[Dict], lookback: Optional[int] = None, timeframe: str = "H1") -> Dict:
         """
         Detecteer support en resistance levels op basis van historische highs/lows
         Gebruikt pivot points en lokale minima/maxima
         """
+        # Get timeframe-specific lookback if not provided
+        if lookback is None:
+            tf_params = self.get_timeframe_parameters(timeframe)
+            lookback = tf_params['sr_lookback']
+        
         if len(candles) < lookback:
             return {'support': 0, 'resistance': 0, 'support_strength': 0, 'resistance_strength': 0}
         
@@ -279,11 +347,15 @@ class TradingStrategy:
         }
     
     def calculate_dynamic_tp_sl(self, signal: str, entry_price: float, candles: List[Dict], 
-                                 risk_reward_ratio: float = 2.0) -> Dict:
+                                 risk_reward_ratio: float = 2.0, timeframe: str = "H1") -> Dict:
         """
         Bereken dynamische Take Profit en Stop Loss op basis van support/resistance levels
         """
-        if not candles or len(candles) < 20:
+        # Get minimum candles for timeframe
+        tf_params = self.get_timeframe_parameters(timeframe)
+        min_candles = tf_params['min_candles']
+        
+        if not candles or len(candles) < min_candles:
             # Fallback naar vaste TP/SL
             if signal == 'BUY':
                 return {
@@ -302,26 +374,56 @@ class TradingStrategy:
                     'method': 'fixed'
                 }
         
-        # Detecteer support/resistance
-        sr = self.detect_support_resistance(candles, lookback=min(50, len(candles)))
+        # Detecteer support/resistance with timeframe-specific lookback
+        sr = self.detect_support_resistance(candles, timeframe=timeframe)
         
         if signal == 'BUY':
             # Voor BUY: TP richting resistance, SL onder support
-            if sr['resistance'] > entry_price:
-                # Gebruik resistance als TP target (maar niet te ver)
-                tp_target = min(sr['resistance'], entry_price * 1.01)  # Max 1% winst
-                tp_distance = tp_target - entry_price
-                sl_distance = tp_distance / risk_reward_ratio
-                sl_target = entry_price - sl_distance
-                
-                # Zorg dat SL onder support ligt als mogelijk
-                if sr['support'] > 0 and sr['support'] < entry_price:
-                    sl_target = min(sl_target, sr['support'] * 0.999)  # Net onder support
+            # Eerst berekenen we SL op basis van risk/reward ratio
+            # Dan passen we TP aan om de ratio te behouden
+            
+            # Start met een redelijke SL distance (max 1% van entry price voor M5)
+            max_sl_percent = 0.01 if timeframe in ['M5', 'M15'] else 0.02
+            max_sl_distance = entry_price * max_sl_percent
+            
+            # Als support dichtbij is, gebruik die als SL
+            if sr['support'] > 0 and sr['support'] < entry_price:
+                support_distance = entry_price - sr['support']
+                # Gebruik support als SL, maar niet te ver
+                sl_distance = min(support_distance * 0.999, max_sl_distance)
             else:
-                # Geen resistance gevonden, gebruik vaste ratio
-                sl_distance = (entry_price - sr['support']) * 0.5 if sr['support'] > 0 else entry_price * 0.002
-                tp_distance = sl_distance * risk_reward_ratio
+                # Geen support gevonden, gebruik max SL distance
+                sl_distance = max_sl_distance
+            
+            # Bereken TP op basis of risk/reward ratio
+            tp_distance = sl_distance * risk_reward_ratio
+            
+            # Als resistance dichtbij is en binnen TP distance, gebruik die
+            if sr['resistance'] > entry_price:
+                resistance_distance = sr['resistance'] - entry_price
+                # Gebruik resistance als TP als het binnen redelijke afstand is
+                if resistance_distance <= tp_distance * 1.5:  # Max 50% verder dan berekend
+                    tp_target = sr['resistance']
+                else:
+                    # Resistance te ver, gebruik berekende TP
+                    tp_target = entry_price + tp_distance
+            else:
+                # Geen resistance gevonden, gebruik berekende TP
                 tp_target = entry_price + tp_distance
+            
+            # Zorg dat TP niet te ver is (max 2% voor M5)
+            max_tp_percent = 0.02 if timeframe in ['M5', 'M15'] else 0.03
+            max_tp_distance = entry_price * max_tp_percent
+            if tp_distance > max_tp_distance:
+                tp_distance = max_tp_distance
+                tp_target = entry_price + tp_distance
+                # Herbereken SL om ratio te behouden
+                sl_distance = tp_distance / risk_reward_ratio
+                if sr['support'] > 0 and sr['support'] < entry_price:
+                    sl_target = min(entry_price - sl_distance, sr['support'] * 0.999)
+                else:
+                    sl_target = entry_price - sl_distance
+            else:
                 sl_target = entry_price - sl_distance
             
             # Convert naar pips (voor XAUUSD: 1 pip = 0.01)
@@ -340,24 +442,54 @@ class TradingStrategy:
         
         else:  # SELL
             # Voor SELL: TP richting support, SL boven resistance
-            if sr['support'] > 0 and sr['support'] < entry_price:
-                # Gebruik support als TP target
-                tp_target = max(sr['support'], entry_price * 0.99)  # Min 1% winst
-                tp_distance = entry_price - tp_target
-                sl_distance = tp_distance / risk_reward_ratio
-                sl_target = entry_price + sl_distance
-                
-                # Zorg dat SL boven resistance ligt als mogelijk
-                if sr['resistance'] > entry_price:
-                    sl_target = max(sl_target, sr['resistance'] * 1.001)  # Net boven resistance
+            # Eerst berekenen we SL op basis van risk/reward ratio
+            # Dan passen we TP aan om de ratio te behouden
+            
+            # Start met een redelijke SL distance (max 1% van entry price voor M5)
+            max_sl_percent = 0.01 if timeframe in ['M5', 'M15'] else 0.02
+            max_sl_distance = entry_price * max_sl_percent
+            
+            # Als resistance dichtbij is, gebruik die als SL
+            if sr['resistance'] > entry_price:
+                resistance_distance = sr['resistance'] - entry_price
+                # Gebruik resistance als SL, maar niet te ver
+                sl_distance = min(resistance_distance * 1.001, max_sl_distance)
             else:
-                # Geen support gevonden, gebruik vaste ratio
-                sl_distance = (sr['resistance'] - entry_price) * 0.5 if sr['resistance'] > entry_price else entry_price * 0.002
-                tp_distance = sl_distance * risk_reward_ratio
+                # Geen resistance gevonden, gebruik max SL distance
+                sl_distance = max_sl_distance
+            
+            # Bereken TP op basis van risk/reward ratio
+            tp_distance = sl_distance * risk_reward_ratio
+            
+            # Als support dichtbij is en binnen TP distance, gebruik die
+            if sr['support'] > 0 and sr['support'] < entry_price:
+                support_distance = entry_price - sr['support']
+                # Gebruik support als TP als het binnen redelijke afstand is
+                if support_distance <= tp_distance * 1.5:  # Max 50% verder dan berekend
+                    tp_target = sr['support']
+                else:
+                    # Support te ver, gebruik berekende TP
+                    tp_target = entry_price - tp_distance
+            else:
+                # Geen support gevonden, gebruik berekende TP
                 tp_target = entry_price - tp_distance
+            
+            # Zorg dat TP niet te ver is (max 2% voor M5)
+            max_tp_percent = 0.02 if timeframe in ['M5', 'M15'] else 0.03
+            max_tp_distance = entry_price * max_tp_percent
+            if tp_distance > max_tp_distance:
+                tp_distance = max_tp_distance
+                tp_target = entry_price - tp_distance
+                # Herbereken SL om ratio te behouden
+                sl_distance = tp_distance / risk_reward_ratio
+                if sr['resistance'] > entry_price:
+                    sl_target = max(entry_price + sl_distance, sr['resistance'] * 1.001)
+                else:
+                    sl_target = entry_price + sl_distance
+            else:
                 sl_target = entry_price + sl_distance
             
-            # Convert naar pips
+            # Convert naar pips (voor XAUUSD: 1 pip = 0.01)
             tp_pips = int((entry_price - tp_target) / 0.01)
             sl_pips = int((sl_target - entry_price) / 0.01)
             
@@ -543,14 +675,18 @@ class TradingStrategy:
         Generate trading signal based on XAUUSD chart/technical analysis
         Gebruikt: Moving Averages, RSI, MACD, Support/Resistance, Candlestick Patterns
         """
+        # Get timeframe-specific parameters
+        tf_params = self.get_timeframe_parameters(timeframe)
+        min_candles = tf_params['min_candles']
+        
         # Haal ECHTE candlestick data op (niet alleen close prices!)
         candles = self.get_candlestick_data(symbol=symbol, timeframe=timeframe, count=count)
         
-        if len(candles) < 20:
+        if len(candles) < min_candles:
             return {
                 'signal': 'NEUTRAL',
                 'confidence': 0,
-                'reason': 'Insufficient candlestick data for analysis',
+                'reason': f'Insufficient candlestick data for analysis (need {min_candles}, got {len(candles)})',
                 'analysis': {},
                 'tp_sl': None
             }
@@ -558,27 +694,34 @@ class TradingStrategy:
         # Extract prices voor indicatoren
         prices = [float(c.get('close', 0)) for c in candles if c.get('close', 0) > 0]
         
-        if len(prices) < 20:
+        if len(prices) < min_candles:
             return {
                 'signal': 'NEUTRAL',
                 'confidence': 0,
-                'reason': 'Insufficient price data for analysis',
+                'reason': f'Insufficient price data for analysis (need {min_candles}, got {len(prices)})',
                 'analysis': {},
                 'tp_sl': None
             }
         
-        # Calculate technical indicators (use parameters)
-        sma_20 = self.calculate_sma(prices, self.sma_short)
-        sma_50 = self.calculate_sma(prices, self.sma_long) if len(prices) >= self.sma_long else sma_20
-        ema_12 = self.calculate_ema(prices, 12)
-        ema_26 = self.calculate_ema(prices, 26) if len(prices) >= 26 else ema_12
-        rsi = self.calculate_rsi(prices, self.rsi_period)
-        macd = self.calculate_macd(prices)
+        # Use timeframe-specific parameters (override with custom if provided)
+        sma_short_period = self.parameters.get('sma_short', tf_params['sma_short'])
+        sma_long_period = self.parameters.get('sma_long', tf_params['sma_long'])
+        ema_fast_period = self.parameters.get('ema_fast', tf_params['ema_fast'])
+        ema_slow_period = self.parameters.get('ema_slow', tf_params['ema_slow'])
+        rsi_period = self.parameters.get('rsi_period', tf_params['rsi_period'])
+        
+        # Calculate technical indicators with timeframe-specific parameters
+        sma_short = self.calculate_sma(prices, sma_short_period)
+        sma_long = self.calculate_sma(prices, sma_long_period) if len(prices) >= sma_long_period else sma_short
+        ema_fast = self.calculate_ema(prices, ema_fast_period)
+        ema_slow = self.calculate_ema(prices, ema_slow_period) if len(prices) >= ema_slow_period else ema_fast
+        rsi = self.calculate_rsi(prices, rsi_period)
+        macd = self.calculate_macd(prices, fast=ema_fast_period, slow=ema_slow_period)
         
         current_price = prices[-1]
         
-        # Detecteer support/resistance levels
-        sr = self.detect_support_resistance(candles, lookback=min(50, len(candles)))
+        # Detecteer support/resistance levels with timeframe-specific lookback
+        sr = self.detect_support_resistance(candles, timeframe=timeframe)
         
         # Detecteer candlestick patronen
         patterns = self.detect_candlestick_patterns(candles)
@@ -588,10 +731,10 @@ class TradingStrategy:
         confidence_factors = []
         
         # 1. Moving Average Crossover
-        if sma_20 > sma_50 and current_price > sma_20:
+        if sma_short > sma_long and current_price > sma_short:
             signals.append('BUY')
             confidence_factors.append(25)
-        elif sma_20 < sma_50 and current_price < sma_20:
+        elif sma_short < sma_long and current_price < sma_short:
             signals.append('SELL')
             confidence_factors.append(25)
         
@@ -615,10 +758,10 @@ class TradingStrategy:
             confidence_factors.append(20)
         
         # 4. EMA Crossover
-        if ema_12 > ema_26 and current_price > ema_12:
+        if ema_fast > ema_slow and current_price > ema_fast:
             signals.append('BUY')
             confidence_factors.append(15)
-        elif ema_12 < ema_26 and current_price < ema_12:
+        elif ema_fast < ema_slow and current_price < ema_fast:
             signals.append('SELL')
             confidence_factors.append(15)
         
@@ -670,10 +813,10 @@ class TradingStrategy:
         
         # Generate reason
         reasons = []
-        if sma_20 > sma_50:
-            reasons.append(f"SMA20 ({sma_20:.2f}) > SMA50 ({sma_50:.2f})")
-        elif sma_20 < sma_50:
-            reasons.append(f"SMA20 ({sma_20:.2f}) < SMA50 ({sma_50:.2f})")
+        if sma_short > sma_long:
+            reasons.append(f"SMA{sma_short_period} ({sma_short:.2f}) > SMA{sma_long_period} ({sma_long:.2f})")
+        elif sma_short < sma_long:
+            reasons.append(f"SMA{sma_short_period} ({sma_short:.2f}) < SMA{sma_long_period} ({sma_long:.2f})")
         
         if rsi < 30:
             reasons.append(f"RSI oversold ({rsi:.1f})")
@@ -690,7 +833,7 @@ class TradingStrategy:
         # Bereken dynamische TP/SL als er een signaal is
         tp_sl = None
         if signal in ['BUY', 'SELL']:
-            tp_sl = self.calculate_dynamic_tp_sl(signal, current_price, candles, risk_reward_ratio=self.risk_reward_ratio)
+            tp_sl = self.calculate_dynamic_tp_sl(signal, current_price, candles, risk_reward_ratio=self.risk_reward_ratio, timeframe=timeframe)
             # Voeg TP/SL info toe aan reason
             if tp_sl['method'] == 'support_resistance':
                 if signal == 'BUY':
@@ -707,18 +850,24 @@ class TradingStrategy:
             'tp_sl': tp_sl,
             'analysis': {
                 'current_price': current_price,
-                'sma_20': sma_20,
-                'sma_50': sma_50,
-                'ema_12': ema_12,
-                'ema_26': ema_26,
+                'sma_short': sma_short,
+                'sma_long': sma_long,
+                'sma_short_period': sma_short_period,
+                'sma_long_period': sma_long_period,
+                'ema_fast': ema_fast,
+                'ema_slow': ema_slow,
+                'ema_fast_period': ema_fast_period,
+                'ema_slow_period': ema_slow_period,
                 'rsi': rsi,
+                'rsi_period': rsi_period,
                 'macd': macd,
                 'buy_signals': buy_count,
                 'sell_signals': sell_count,
                 'support': sr.get('support', 0),
                 'resistance': sr.get('resistance', 0),
                 'candlestick_patterns': patterns.get('patterns', []),
-                'pattern_signal_strength': patterns.get('signal_strength', 0)
+                'pattern_signal_strength': patterns.get('signal_strength', 0),
+                'timeframe': timeframe
             }
         }
     

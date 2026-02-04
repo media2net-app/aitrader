@@ -27,16 +27,7 @@ export default function Sidebar() {
   };
 
   const menuItems = [
-    { name: 'Dashboard', path: '/', icon: LayoutDashboard },
-    { name: 'Trading', path: '/trading', icon: TrendingUp },
-    { name: 'XAU/USD Analyse', path: '/xauusd-analyse', icon: LineChart },
-    { name: 'Calculator', path: '/calculator', icon: Calculator },
-    { name: 'Strategie', path: '/strategy', icon: Target },
-    { name: 'Backtesting', path: '/backtest', icon: BarChart3 },
-    { name: 'Portfolio', path: '/portfolio', icon: PieChart },
-    { name: 'Analytics', path: '/analytics', icon: BarChart3 },
-    { name: 'Integrations', path: '/integrations', icon: Link2 },
-    { name: 'System Status', path: '/system-status', icon: Activity },
+    { name: 'Live Trader', path: '/live-trader', icon: Activity },
   ];
 
   return (

@@ -1,0 +1,500 @@
+[2026-02-04 01:40:55] [INFO] 📊 Daily Stats: 0/2 trades | P&L: $0.00 (0.00%)
+[2026-02-04 01:41:00] [INFO] 🔍 Starting analysis for XAUUSD on M5 timeframe
+[2026-02-04 01:41:02] [INFO] 📈 Signal Analysis Result: NEUTRAL | Confidence: 0% | Required: 70%
+[2026-02-04 01:41:02] [INFO] 💡 Signal Reason: Insufficient candlestick data for analysis (need 30, got 0)
+[2026-02-04 01:41:02] [WARNING] ❌ Trade REJECTED: Confidence too low (0% < 70%)
+[2026-02-04 01:41:09] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 01:42:04] [INFO] 📊 Daily Stats: 0/2 trades | P&L: $0.00 (0.00%)
+[2026-02-04 01:42:09] [INFO] 🔍 Starting analysis for XAUUSD on M5 timeframe
+[2026-02-04 01:42:11] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 01:42:11] [INFO] 📈 Signal Analysis Result: NEUTRAL | Confidence: 0% | Required: 70%
+[2026-02-04 01:42:11] [INFO] 💡 Signal Reason: Insufficient candlestick data for analysis (need 30, got 0)
+[2026-02-04 01:42:11] [WARNING] ❌ Trade REJECTED: Confidence too low (0% < 70%)
+[2026-02-04 01:43:13] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 01:44:15] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 01:55:13] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 02:01:45] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 02:17:55] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 02:18:57] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 02:20:00] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 02:21:02] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 02:22:04] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 02:23:06] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 02:24:08] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 02:25:11] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 02:26:13] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 02:27:15] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 02:28:17] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 02:29:20] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 02:30:22] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 02:31:24] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 02:32:26] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 02:33:28] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 02:36:56] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 02:51:16] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 03:07:21] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 03:08:23] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 03:09:26] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 03:10:28] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 03:11:30] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 03:12:32] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 03:13:35] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 03:14:37] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 03:15:39] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 03:16:41] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 03:17:43] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 03:18:46] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 03:19:48] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 03:20:50] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 03:21:52] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 03:22:55] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 03:23:57] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 03:24:59] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 03:26:01] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 03:27:03] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 03:28:06] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 04:09:05] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 04:10:07] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 04:11:09] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 04:12:11] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 04:13:14] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 04:14:16] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 04:15:18] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 04:16:20] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 04:17:22] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 04:18:25] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 04:19:27] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 04:20:29] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 04:21:31] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 04:22:34] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 04:23:36] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 04:24:38] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 04:25:40] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 04:26:42] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 04:27:45] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 04:28:47] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 04:29:49] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 04:30:51] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 04:31:54] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 04:32:56] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 04:33:58] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 04:35:00] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 04:36:03] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 04:37:05] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 04:38:07] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 04:39:09] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 04:40:11] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 04:41:14] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 04:42:16] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 04:43:18] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 04:44:20] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 04:45:23] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 04:53:11] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 05:16:29] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 05:17:31] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 05:18:34] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 05:19:36] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 05:20:38] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 05:21:40] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 05:22:42] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 05:23:44] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 05:24:47] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 05:25:49] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 05:26:51] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 05:27:53] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 05:43:48] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 05:54:06] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 06:10:04] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 06:11:07] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 06:12:09] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 06:13:11] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 06:14:13] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 06:15:15] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 06:16:17] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 06:17:20] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 06:18:22] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 06:19:24] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 06:20:26] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 06:21:29] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 06:22:31] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 06:23:33] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 06:24:35] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 06:25:37] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 06:26:40] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 06:27:42] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 06:28:44] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 06:29:46] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 06:54:55] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 06:55:57] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 06:56:59] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 06:58:02] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 06:59:04] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 07:00:06] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 07:01:08] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 07:02:11] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 07:03:13] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 07:04:15] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 07:05:18] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 07:06:20] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 07:07:22] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 07:08:24] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 07:09:27] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 07:10:29] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 07:11:31] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 07:12:34] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 07:13:36] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 07:14:38] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 07:15:41] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 07:16:43] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 07:17:45] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 07:18:47] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 07:19:50] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 07:20:52] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 07:21:54] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 07:22:57] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 07:23:59] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 07:25:01] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 07:26:03] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 07:27:06] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 07:28:08] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 07:29:10] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 07:30:13] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 07:31:15] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 07:32:17] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 07:33:20] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 07:34:22] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 07:35:24] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 07:36:26] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 07:37:29] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 07:38:31] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 07:48:15] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 07:52:46] [WARNING] 🛑 Trading stopped: Account balance is zero or negative
+[2026-02-04 07:53:24] [INFO] Live Trader initialized - Config: moderate, Timeframe: M5, Symbol: XAUUSD
+[2026-02-04 07:53:25] [INFO] Live Trader initialized - Config: moderate, Timeframe: M5, Symbol: XAUUSD
+[2026-02-04 07:53:29] [INFO] Live Trader initialized - Config: moderate, Timeframe: M5, Symbol: XAUUSD
+[2026-02-04 07:53:34] [INFO] Live Trader initialized - Config: moderate, Timeframe: M5, Symbol: XAUUSD
+[2026-02-04 07:53:35] [INFO] Live Trader initialized - Config: moderate, Timeframe: M5, Symbol: XAUUSD
+[2026-02-04 07:53:35] [INFO] Live Trader initialized - Config: moderate, Timeframe: M5, Symbol: XAUUSD
+[2026-02-04 07:53:35] [INFO] 📊 Daily Stats: 0/2 trades | P&L: $0.00 (0.00%)
+[2026-02-04 07:53:38] [INFO] Live Trader initialized - Config: moderate, Timeframe: M5, Symbol: XAUUSD
+[2026-02-04 07:53:38] [INFO] 🔍 Starting analysis for XAUUSD on M5 timeframe
+[2026-02-04 07:53:38] [INFO] 📈 Signal Analysis Result: NEUTRAL | Confidence: 0% | Required: 70%
+[2026-02-04 07:53:38] [INFO] 💡 Signal Reason: Insufficient candlestick data for analysis (need 30, got 0)
+[2026-02-04 07:53:38] [WARNING] ❌ Trade REJECTED: Confidence too low (0% < 70%)
+[2026-02-04 07:53:41] [INFO] Live Trader initialized - Config: moderate, Timeframe: M5, Symbol: XAUUSD
+[2026-02-04 07:53:44] [INFO] Live Trader initialized - Config: moderate, Timeframe: M5, Symbol: XAUUSD
+[2026-02-04 07:53:47] [INFO] Live Trader initialized - Config: moderate, Timeframe: M5, Symbol: XAUUSD
+[2026-02-04 07:53:50] [INFO] Live Trader initialized - Config: moderate, Timeframe: M5, Symbol: XAUUSD
+[2026-02-04 07:53:53] [INFO] Live Trader initialized - Config: moderate, Timeframe: M5, Symbol: XAUUSD
+[2026-02-04 07:53:56] [INFO] Live Trader initialized - Config: moderate, Timeframe: M5, Symbol: XAUUSD
+[2026-02-04 07:53:59] [INFO] Live Trader initialized - Config: moderate, Timeframe: M5, Symbol: XAUUSD
+[2026-02-04 07:54:02] [INFO] Live Trader initialized - Config: moderate, Timeframe: M5, Symbol: XAUUSD
+[2026-02-04 07:54:05] [INFO] Live Trader initialized - Config: moderate, Timeframe: M5, Symbol: XAUUSD
+[2026-02-04 07:54:08] [INFO] Live Trader initialized - Config: moderate, Timeframe: M5, Symbol: XAUUSD
+[2026-02-04 07:54:11] [INFO] Live Trader initialized - Config: moderate, Timeframe: M5, Symbol: XAUUSD
+[2026-02-04 07:54:14] [INFO] Live Trader initialized - Config: moderate, Timeframe: M5, Symbol: XAUUSD
+[2026-02-04 07:54:17] [INFO] Live Trader initialized - Config: moderate, Timeframe: M5, Symbol: XAUUSD
+[2026-02-04 07:54:20] [INFO] Live Trader initialized - Config: moderate, Timeframe: M5, Symbol: XAUUSD
+[2026-02-04 07:54:23] [INFO] Live Trader initialized - Config: moderate, Timeframe: M5, Symbol: XAUUSD
+[2026-02-04 07:54:26] [INFO] Live Trader initialized - Config: moderate, Timeframe: M5, Symbol: XAUUSD
+[2026-02-04 07:54:29] [INFO] Live Trader initialized - Config: moderate, Timeframe: M5, Symbol: XAUUSD
+[2026-02-04 07:54:32] [INFO] Live Trader initialized - Config: moderate, Timeframe: M5, Symbol: XAUUSD
+[2026-02-04 07:54:35] [INFO] Live Trader initialized - Config: moderate, Timeframe: M5, Symbol: XAUUSD
+[2026-02-04 07:54:38] [INFO] Live Trader initialized - Config: moderate, Timeframe: M5, Symbol: XAUUSD
+[2026-02-04 07:54:40] [INFO] 📊 Daily Stats: 0/2 trades | P&L: $0.00 (0.00%)
+[2026-02-04 07:54:41] [INFO] Live Trader initialized - Config: moderate, Timeframe: M5, Symbol: XAUUSD
+[2026-02-04 07:54:42] [INFO] 🔍 Starting analysis for XAUUSD on M5 timeframe
+[2026-02-04 07:54:44] [INFO] Live Trader initialized - Config: moderate, Timeframe: M5, Symbol: XAUUSD
+[2026-02-04 07:54:45] [INFO] 📈 Signal Analysis Result: NEUTRAL | Confidence: 0% | Required: 70%
+[2026-02-04 07:54:45] [INFO] 💡 Signal Reason: Insufficient candlestick data for analysis (need 30, got 0)
+[2026-02-04 07:54:45] [WARNING] ❌ Trade REJECTED: Confidence too low (0% < 70%)
+[2026-02-04 07:54:47] [INFO] Live Trader initialized - Config: moderate, Timeframe: M5, Symbol: XAUUSD
+[2026-02-04 07:54:50] [INFO] Live Trader initialized - Config: moderate, Timeframe: M5, Symbol: XAUUSD
+[2026-02-04 07:54:52] [INFO] Live Trader initialized - Config: moderate, Timeframe: M5, Symbol: XAUUSD
+[2026-02-04 07:54:56] [INFO] Live Trader initialized - Config: moderate, Timeframe: M5, Symbol: XAUUSD
+[2026-02-04 07:54:59] [INFO] Live Trader initialized - Config: moderate, Timeframe: M5, Symbol: XAUUSD
+[2026-02-04 07:55:02] [INFO] Live Trader initialized - Config: moderate, Timeframe: M5, Symbol: XAUUSD
+[2026-02-04 07:55:05] [INFO] Live Trader initialized - Config: moderate, Timeframe: M5, Symbol: XAUUSD
+[2026-02-04 07:55:08] [INFO] Live Trader initialized - Config: moderate, Timeframe: M5, Symbol: XAUUSD
+[2026-02-04 07:55:11] [INFO] Live Trader initialized - Config: moderate, Timeframe: M5, Symbol: XAUUSD
+[2026-02-04 07:55:14] [INFO] Live Trader initialized - Config: moderate, Timeframe: M5, Symbol: XAUUSD
+[2026-02-04 07:55:17] [INFO] Live Trader initialized - Config: moderate, Timeframe: M5, Symbol: XAUUSD
+[2026-02-04 07:55:20] [INFO] Live Trader initialized - Config: moderate, Timeframe: M5, Symbol: XAUUSD
+[2026-02-04 07:55:23] [INFO] Live Trader initialized - Config: moderate, Timeframe: M5, Symbol: XAUUSD
+[2026-02-04 07:55:26] [INFO] Live Trader initialized - Config: moderate, Timeframe: M5, Symbol: XAUUSD
+[2026-02-04 07:55:29] [INFO] Live Trader initialized - Config: moderate, Timeframe: M5, Symbol: XAUUSD
+[2026-02-04 07:55:32] [INFO] Live Trader initialized - Config: moderate, Timeframe: M5, Symbol: XAUUSD
+[2026-02-04 07:55:35] [INFO] Live Trader initialized - Config: moderate, Timeframe: M5, Symbol: XAUUSD
+[2026-02-04 07:55:38] [INFO] Live Trader initialized - Config: moderate, Timeframe: M5, Symbol: XAUUSD
+[2026-02-04 07:55:41] [INFO] Live Trader initialized - Config: moderate, Timeframe: M5, Symbol: XAUUSD
+[2026-02-04 07:55:44] [INFO] Live Trader initialized - Config: moderate, Timeframe: M5, Symbol: XAUUSD
+[2026-02-04 07:55:45] [INFO] 📊 Daily Stats: 0/2 trades | P&L: $0.00 (0.00%)
+[2026-02-04 07:55:47] [INFO] Live Trader initialized - Config: moderate, Timeframe: M5, Symbol: XAUUSD
+[2026-02-04 07:55:47] [INFO] 🔍 Starting analysis for XAUUSD on M5 timeframe
+[2026-02-04 07:55:47] [INFO] 📈 Signal Analysis Result: NEUTRAL | Confidence: 0% | Required: 70%
+[2026-02-04 07:55:47] [INFO] 💡 Signal Reason: Insufficient candlestick data for analysis (need 30, got 0)
+[2026-02-04 07:55:47] [WARNING] ❌ Trade REJECTED: Confidence too low (0% < 70%)
+[2026-02-04 07:55:50] [INFO] Live Trader initialized - Config: moderate, Timeframe: M5, Symbol: XAUUSD
+[2026-02-04 07:55:53] [INFO] Live Trader initialized - Config: moderate, Timeframe: M5, Symbol: XAUUSD
+[2026-02-04 07:55:56] [INFO] Live Trader initialized - Config: moderate, Timeframe: M5, Symbol: XAUUSD
+[2026-02-04 07:55:59] [INFO] Live Trader initialized - Config: moderate, Timeframe: M5, Symbol: XAUUSD
+[2026-02-04 07:56:02] [INFO] Live Trader initialized - Config: moderate, Timeframe: M5, Symbol: XAUUSD
+[2026-02-04 07:56:05] [INFO] Live Trader initialized - Config: moderate, Timeframe: M5, Symbol: XAUUSD
+[2026-02-04 07:56:08] [INFO] Live Trader initialized - Config: moderate, Timeframe: M5, Symbol: XAUUSD
+[2026-02-04 07:56:11] [INFO] Live Trader initialized - Config: moderate, Timeframe: M5, Symbol: XAUUSD
+[2026-02-04 07:56:14] [INFO] Live Trader initialized - Config: moderate, Timeframe: M5, Symbol: XAUUSD
+[2026-02-04 07:56:17] [INFO] Live Trader initialized - Config: moderate, Timeframe: M5, Symbol: XAUUSD
+[2026-02-04 07:56:20] [INFO] Live Trader initialized - Config: moderate, Timeframe: M5, Symbol: XAUUSD
+[2026-02-04 07:56:23] [INFO] Live Trader initialized - Config: moderate, Timeframe: M5, Symbol: XAUUSD
+[2026-02-04 07:56:26] [INFO] Live Trader initialized - Config: moderate, Timeframe: M5, Symbol: XAUUSD
+[2026-02-04 07:56:29] [INFO] Live Trader initialized - Config: moderate, Timeframe: M5, Symbol: XAUUSD
+[2026-02-04 07:56:32] [INFO] Live Trader initialized - Config: moderate, Timeframe: M5, Symbol: XAUUSD
+[2026-02-04 07:56:35] [INFO] Live Trader initialized - Config: moderate, Timeframe: M5, Symbol: XAUUSD
+[2026-02-04 07:56:38] [INFO] Live Trader initialized - Config: moderate, Timeframe: M5, Symbol: XAUUSD
+[2026-02-04 07:56:41] [INFO] Live Trader initialized - Config: moderate, Timeframe: M5, Symbol: XAUUSD
+[2026-02-04 07:56:44] [INFO] Live Trader initialized - Config: moderate, Timeframe: M5, Symbol: XAUUSD
+[2026-02-04 07:56:48] [INFO] 📊 Daily Stats: 0/2 trades | P&L: $0.00 (0.00%)
+[2026-02-04 07:56:52] [INFO] 🔍 Starting analysis for XAUUSD on M5 timeframe
+[2026-02-04 07:56:52] [INFO] 📈 Signal Analysis Result: BUY | Confidence: 20% | Required: 70%
+[2026-02-04 07:56:52] [INFO] 💡 Signal Reason: SMA10 (5081.50) > SMA20 (5077.32); MACD bullish; TP: 5085.42 (Resistance: 5085.42), SL: 5064.25 (Support: 5069.32)
+[2026-02-04 07:56:52] [INFO] 📊 Technical Indicators: RSI: 45.00, Support: $5069.32, Resistance: $5085.42
+[2026-02-04 07:56:52] [WARNING] ❌ Trade REJECTED: Confidence too low (20% < 70%)
+[2026-02-04 07:57:52] [INFO] 📊 Daily Stats: 0/2 trades | P&L: $0.00 (0.00%)
+[2026-02-04 07:57:53] [INFO] 🔍 Starting analysis for XAUUSD on M5 timeframe
+[2026-02-04 07:57:55] [INFO] 📈 Signal Analysis Result: NEUTRAL | Confidence: 0% | Required: 70%
+[2026-02-04 07:57:55] [INFO] 💡 Signal Reason: Insufficient candlestick data for analysis (need 30, got 0)
+[2026-02-04 07:57:55] [WARNING] ❌ Trade REJECTED: Confidence too low (0% < 70%)
+[2026-02-04 07:58:56] [INFO] 📊 Daily Stats: 0/2 trades | P&L: $0.00 (0.00%)
+[2026-02-04 07:58:58] [INFO] 🔍 Starting analysis for XAUUSD on M5 timeframe
+[2026-02-04 07:59:00] [INFO] 📈 Signal Analysis Result: NEUTRAL | Confidence: 0% | Required: 70%
+[2026-02-04 07:59:00] [INFO] 💡 Signal Reason: Insufficient candlestick data for analysis (need 30, got 0)
+[2026-02-04 07:59:00] [WARNING] ❌ Trade REJECTED: Confidence too low (0% < 70%)
+[2026-02-04 08:00:00] [INFO] 📊 Daily Stats: 0/2 trades | P&L: $0.00 (0.00%)
+[2026-02-04 08:00:00] [INFO] 🔍 Starting analysis for XAUUSD on M5 timeframe
+[2026-02-04 08:00:00] [INFO] 📈 Signal Analysis Result: NEUTRAL | Confidence: 50% | Required: 70%
+[2026-02-04 08:00:00] [INFO] 💡 Signal Reason: SMA10 (5081.14) > SMA20 (5078.18); MACD bullish
+[2026-02-04 08:00:00] [INFO] 📊 Technical Indicators: RSI: 46.99, Support: $5069.32, Resistance: $5085.42
+[2026-02-04 08:00:00] [WARNING] ❌ Trade REJECTED: Confidence too low (50% < 70%)
+[2026-02-04 08:01:00] [INFO] 📊 Daily Stats: 0/2 trades | P&L: $0.00 (0.00%)
+[2026-02-04 08:01:00] [INFO] 🔍 Starting analysis for XAUUSD on M5 timeframe
+[2026-02-04 08:01:00] [INFO] 📈 Signal Analysis Result: NEUTRAL | Confidence: 50% | Required: 70%
+[2026-02-04 08:01:00] [INFO] 💡 Signal Reason: SMA10 (5080.95) > SMA20 (5078.09); MACD bullish
+[2026-02-04 08:01:00] [INFO] 📊 Technical Indicators: RSI: 44.11, Support: $5069.32, Resistance: $5085.42
+[2026-02-04 08:01:00] [WARNING] ❌ Trade REJECTED: Confidence too low (50% < 70%)
+[2026-02-04 08:02:02] [INFO] 📊 Daily Stats: 0/2 trades | P&L: $0.00 (0.00%)
+[2026-02-04 08:02:02] [INFO] 🔍 Starting analysis for XAUUSD on M5 timeframe
+[2026-02-04 08:02:04] [INFO] 📈 Signal Analysis Result: NEUTRAL | Confidence: 0% | Required: 70%
+[2026-02-04 08:02:04] [INFO] 💡 Signal Reason: Insufficient candlestick data for analysis (need 30, got 0)
+[2026-02-04 08:02:04] [WARNING] ❌ Trade REJECTED: Confidence too low (0% < 70%)
+[2026-02-04 08:03:04] [INFO] 📊 Daily Stats: 0/2 trades | P&L: $0.00 (0.00%)
+[2026-02-04 08:03:05] [INFO] 🔍 Starting analysis for XAUUSD on M5 timeframe
+[2026-02-04 08:03:07] [INFO] 📈 Signal Analysis Result: NEUTRAL | Confidence: 0% | Required: 70%
+[2026-02-04 08:03:07] [INFO] 💡 Signal Reason: Insufficient candlestick data for analysis (need 30, got 0)
+[2026-02-04 08:03:07] [WARNING] ❌ Trade REJECTED: Confidence too low (0% < 70%)
+[2026-02-04 08:04:07] [INFO] 📊 Daily Stats: 0/2 trades | P&L: $0.00 (0.00%)
+[2026-02-04 08:04:07] [INFO] 🔍 Starting analysis for XAUUSD on M5 timeframe
+[2026-02-04 08:04:07] [INFO] 📈 Signal Analysis Result: NEUTRAL | Confidence: 50% | Required: 70%
+[2026-02-04 08:04:07] [INFO] 💡 Signal Reason: SMA10 (5080.90) > SMA20 (5078.06); MACD bullish
+[2026-02-04 08:04:07] [INFO] 📊 Technical Indicators: RSI: 43.46, Support: $5069.32, Resistance: $5085.42
+[2026-02-04 08:04:07] [WARNING] ❌ Trade REJECTED: Confidence too low (50% < 70%)
+[2026-02-04 08:05:08] [INFO] 📊 Daily Stats: 0/2 trades | P&L: $0.00 (0.00%)
+[2026-02-04 08:05:09] [INFO] 🔍 Starting analysis for XAUUSD on M5 timeframe
+[2026-02-04 08:05:09] [INFO] 📈 Signal Analysis Result: SELL | Confidence: 45% | Required: 70%
+[2026-02-04 08:05:09] [INFO] 💡 Signal Reason: SMA10 (5080.90) > SMA20 (5079.05); MACD bullish; TP: 5069.32 (Support: 5069.32), SL: 5090.51 (Resistance: 5085.42)
+[2026-02-04 08:05:09] [INFO] 📊 Technical Indicators: RSI: 48.85, Support: $5069.32, Resistance: $5085.42
+[2026-02-04 08:05:09] [WARNING] ❌ Trade REJECTED: Confidence too low (45% < 70%)
+[2026-02-04 08:06:09] [INFO] 📊 Daily Stats: 0/2 trades | P&L: $0.00 (0.00%)
+[2026-02-04 08:06:10] [INFO] 🔍 Starting analysis for XAUUSD on M5 timeframe
+[2026-02-04 08:06:10] [INFO] 📈 Signal Analysis Result: SELL | Confidence: 45% | Required: 70%
+[2026-02-04 08:06:10] [INFO] 💡 Signal Reason: SMA10 (5080.55) > SMA20 (5078.87); MACD bullish; TP: 5069.32 (Support: 5069.32), SL: 5090.51 (Resistance: 5085.42)
+[2026-02-04 08:06:10] [INFO] 📊 Technical Indicators: RSI: 43.60, Support: $5069.32, Resistance: $5085.42
+[2026-02-04 08:06:10] [WARNING] ❌ Trade REJECTED: Confidence too low (45% < 70%)
+[2026-02-04 08:07:11] [INFO] 📊 Daily Stats: 0/2 trades | P&L: $0.00 (0.00%)
+[2026-02-04 08:07:11] [INFO] 🔍 Starting analysis for XAUUSD on M5 timeframe
+[2026-02-04 08:07:11] [INFO] 📈 Signal Analysis Result: NEUTRAL | Confidence: 50% | Required: 70%
+[2026-02-04 08:07:11] [INFO] 💡 Signal Reason: SMA10 (5079.84) > SMA20 (5078.52); MACD bullish
+[2026-02-04 08:07:11] [INFO] 📊 Technical Indicators: RSI: 35.65, Support: $5056.34, Resistance: $5074.05
+[2026-02-04 08:07:11] [WARNING] ❌ Trade REJECTED: Confidence too low (50% < 70%)
+[2026-02-04 08:08:11] [INFO] 📊 Daily Stats: 0/2 trades | P&L: $0.00 (0.00%)
+[2026-02-04 08:08:11] [INFO] 🔍 Starting analysis for XAUUSD on M5 timeframe
+[2026-02-04 08:08:11] [INFO] 📈 Signal Analysis Result: NEUTRAL | Confidence: 50% | Required: 70%
+[2026-02-04 08:08:11] [INFO] 💡 Signal Reason: SMA10 (5079.25) > SMA20 (5078.22); MACD bullish
+[2026-02-04 08:08:11] [INFO] 📊 Technical Indicators: RSI: 31.03, Support: $5056.34, Resistance: $5074.05
+[2026-02-04 08:08:11] [WARNING] ❌ Trade REJECTED: Confidence too low (50% < 70%)
+[2026-02-04 08:09:11] [INFO] 📊 Daily Stats: 0/2 trades | P&L: $0.00 (0.00%)
+[2026-02-04 08:09:11] [INFO] 🔍 Starting analysis for XAUUSD on M5 timeframe
+[2026-02-04 08:09:11] [INFO] 📈 Signal Analysis Result: BUY | Confidence: 50% | Required: 70%
+[2026-02-04 08:09:11] [INFO] 💡 Signal Reason: SMA10 (5078.69) > SMA20 (5077.94); RSI oversold (27.6); MACD bullish; TP: 5074.05 (Resistance: 5074.05), SL: 5048.75 (Support: 5056.34)
+[2026-02-04 08:09:11] [INFO] 📊 Technical Indicators: RSI: 27.61, Support: $5056.34, Resistance: $5074.05
+[2026-02-04 08:09:11] [WARNING] ❌ Trade REJECTED: Confidence too low (50% < 70%)
+[2026-02-04 08:10:11] [INFO] 📊 Daily Stats: 0/2 trades | P&L: $0.00 (0.00%)
+[2026-02-04 08:10:12] [INFO] 🔍 Starting analysis for XAUUSD on M5 timeframe
+[2026-02-04 08:10:12] [INFO] 📈 Signal Analysis Result: SELL | Confidence: 70% | Required: 70%
+[2026-02-04 08:10:12] [INFO] 💡 Signal Reason: SMA10 (5077.89) < SMA20 (5078.30); MACD bearish; TP: 5056.34 (Support: 5056.34), SL: 5090.51 (Resistance: 5085.42)
+[2026-02-04 08:10:12] [INFO] 📊 Technical Indicators: RSI: 31.98, Support: $5056.34, Resistance: $5085.42
+[2026-02-04 08:10:12] [INFO] 🎯 TP/SL Calculation: TP=832 pips, SL=2583 pips
+[2026-02-04 08:10:12] [INFO] 📊 Risk/Reward Ratio: 0.32 (Required: 2.0)
+[2026-02-04 08:10:12] [WARNING] ❌ Trade REJECTED: Risk/Reward ratio too low (0.32 < 2.0)
+[2026-02-04 08:11:12] [INFO] 📊 Daily Stats: 0/2 trades | P&L: $0.00 (0.00%)
+[2026-02-04 08:11:12] [INFO] 🔍 Starting analysis for XAUUSD on M5 timeframe
+[2026-02-04 08:11:12] [INFO] 📈 Signal Analysis Result: SELL | Confidence: 70% | Required: 70%
+[2026-02-04 08:11:12] [INFO] 💡 Signal Reason: SMA10 (5077.73) < SMA20 (5078.22); MACD bearish; TP: 5056.34 (Support: 5056.34), SL: 5090.51 (Resistance: 5085.42)
+[2026-02-04 08:11:12] [INFO] 📊 Technical Indicators: RSI: 30.56, Support: $5056.34, Resistance: $5085.42
+[2026-02-04 08:11:12] [INFO] 🎯 TP/SL Calculation: TP=664 pips, SL=2751 pips
+[2026-02-04 08:11:12] [INFO] 📊 Risk/Reward Ratio: 0.24 (Required: 2.0)
+[2026-02-04 08:11:12] [WARNING] ❌ Trade REJECTED: Risk/Reward ratio too low (0.24 < 2.0)
+[2026-02-04 08:12:12] [INFO] 📊 Daily Stats: 0/2 trades | P&L: $0.00 (0.00%)
+[2026-02-04 08:12:13] [INFO] 🔍 Starting analysis for XAUUSD on M5 timeframe
+[2026-02-04 08:12:13] [INFO] 📈 Signal Analysis Result: SELL | Confidence: 90% | Required: 70%
+[2026-02-04 08:12:13] [INFO] 💡 Signal Reason: SMA10 (5077.31) < SMA20 (5078.01); RSI oversold (28.0); MACD bearish; TP: 5056.34 (Support: 5056.34), SL: 5090.51 (Resistance: 5085.42)
+[2026-02-04 08:12:13] [INFO] 📊 Technical Indicators: RSI: 27.95, Support: $5056.34, Resistance: $5085.42
+[2026-02-04 08:12:13] [INFO] 🎯 TP/SL Calculation: TP=248 pips, SL=3167 pips
+[2026-02-04 08:12:13] [INFO] 📊 Risk/Reward Ratio: 0.08 (Required: 2.0)
+[2026-02-04 08:12:13] [WARNING] ❌ Trade REJECTED: Risk/Reward ratio too low (0.08 < 2.0)
+[2026-02-04 08:13:13] [INFO] 📊 Daily Stats: 0/2 trades | P&L: $0.00 (0.00%)
+[2026-02-04 08:13:13] [INFO] 🔍 Starting analysis for XAUUSD on M5 timeframe
+[2026-02-04 08:13:13] [INFO] 📈 Signal Analysis Result: SELL | Confidence: 90% | Required: 70%
+[2026-02-04 08:13:13] [INFO] 💡 Signal Reason: SMA10 (5077.66) < SMA20 (5078.19); MACD bearish; TP: 5056.34 (Support: 5056.34), SL: 5090.51 (Resistance: 5085.42)
+[2026-02-04 08:13:13] [INFO] 📊 Technical Indicators: RSI: 30.14, Support: $5056.34, Resistance: $5085.42
+[2026-02-04 08:13:13] [INFO] 🎯 TP/SL Calculation: TP=602 pips, SL=2813 pips
+[2026-02-04 08:13:13] [INFO] 📊 Risk/Reward Ratio: 0.21 (Required: 2.0)
+[2026-02-04 08:13:13] [WARNING] ❌ Trade REJECTED: Risk/Reward ratio too low (0.21 < 2.0)
+[2026-02-04 08:14:14] [INFO] 📊 Daily Stats: 0/2 trades | P&L: $0.00 (0.00%)
+[2026-02-04 08:14:14] [INFO] 🔍 Starting analysis for XAUUSD on M5 timeframe
+[2026-02-04 08:14:14] [INFO] 📈 Signal Analysis Result: SELL | Confidence: 90% | Required: 70%
+[2026-02-04 08:14:14] [INFO] 💡 Signal Reason: SMA10 (5077.75) < SMA20 (5078.23); MACD bearish; TP: 5056.34 (Support: 5056.34), SL: 5090.51 (Resistance: 5085.42)
+[2026-02-04 08:14:14] [INFO] 📊 Technical Indicators: RSI: 30.73, Support: $5056.34, Resistance: $5085.42
+[2026-02-04 08:14:14] [INFO] 🎯 TP/SL Calculation: TP=688 pips, SL=2727 pips
+[2026-02-04 08:14:14] [INFO] 📊 Risk/Reward Ratio: 0.25 (Required: 2.0)
+[2026-02-04 08:14:14] [WARNING] ❌ Trade REJECTED: Risk/Reward ratio too low (0.25 < 2.0)
+[2026-02-04 08:15:14] [INFO] 📊 Daily Stats: 0/2 trades | P&L: $0.00 (0.00%)
+[2026-02-04 08:15:14] [INFO] 🔍 Starting analysis for XAUUSD on M5 timeframe
+[2026-02-04 08:15:14] [INFO] 📈 Signal Analysis Result: SELL | Confidence: 90% | Required: 70%
+[2026-02-04 08:17:03] [WARNING] ⚠️  Skipping cycle: Cannot get account balance from MT5 (connection issue)
+[2026-02-04 08:18:03] [WARNING] ⚠️  Skipping cycle: Cannot get account balance from MT5 (connection issue)
+[2026-02-04 08:19:03] [INFO] 📊 Daily Stats: 0/2 trades | P&L: $0.00 (0.00%)
+[2026-02-04 08:19:04] [INFO] 🔍 Starting analysis for XAUUSD on M5 timeframe
+[2026-02-04 08:19:04] [INFO] 📈 Signal Analysis Result: SELL | Confidence: 70% | Required: 70%
+[2026-02-04 08:19:04] [INFO] 💡 Signal Reason: SMA10 (5075.96) < SMA20 (5077.77); MACD bearish; TP: 5051.10 (Support: 5051.10), SL: 5085.44 (Resistance: 5085.42)
+[2026-02-04 08:19:04] [INFO] 📊 Technical Indicators: RSI: 40.54, Support: $5051.10, Resistance: $5085.42
+[2026-02-04 08:19:04] [INFO] 🎯 TP/SL Calculation: TP=1503 pips, SL=1929 pips
+[2026-02-04 08:19:04] [INFO] 📊 Risk/Reward Ratio: 0.78 (Required: 2.0)
+[2026-02-04 08:19:04] [WARNING] ❌ Trade REJECTED: Risk/Reward ratio too low (0.78 < 2.0)
+[2026-02-04 08:20:04] [INFO] 📊 Daily Stats: 0/2 trades | P&L: $0.00 (0.00%)
+[2026-02-04 08:20:04] [INFO] 🔍 Starting analysis for XAUUSD on M5 timeframe
+[2026-02-04 08:20:05] [INFO] 📈 Signal Analysis Result: SELL | Confidence: 85% | Required: 70%
+[2026-02-04 08:20:05] [INFO] 💡 Signal Reason: SMA10 (5074.91) < SMA20 (5077.42); MACD bearish; TP: 5051.10 (Support: 5051.10), SL: 5085.44 (Resistance: 5085.42)
+[2026-02-04 08:20:05] [INFO] 📊 Technical Indicators: RSI: 37.75, Support: $5051.10, Resistance: $5085.42
+[2026-02-04 08:20:05] [INFO] 🎯 TP/SL Calculation: TP=1446 pips, SL=1987 pips
+[2026-02-04 08:20:05] [INFO] 📊 Risk/Reward Ratio: 0.73 (Required: 2.0)
+[2026-02-04 08:20:05] [WARNING] ❌ Trade REJECTED: Risk/Reward ratio too low (0.73 < 2.0)
+[2026-02-04 08:21:05] [INFO] 📊 Daily Stats: 0/2 trades | P&L: $0.00 (0.00%)
+[2026-02-04 08:21:08] [INFO] 🔍 Starting analysis for XAUUSD on M5 timeframe
+[2026-02-04 08:21:08] [INFO] 📈 Signal Analysis Result: SELL | Confidence: 70% | Required: 70%
+[2026-02-04 08:21:08] [INFO] 💡 Signal Reason: SMA10 (5074.38) < SMA20 (5077.16); MACD bearish; TP: 5051.10 (Support: 5051.10), SL: 5085.45 (Resistance: 5085.42)
+[2026-02-04 08:21:08] [INFO] 📊 Technical Indicators: RSI: 33.98, Support: $5051.10, Resistance: $5085.42
+[2026-02-04 08:21:08] [INFO] 🎯 TP/SL Calculation: TP=912 pips, SL=2521 pips
+[2026-02-04 08:21:08] [INFO] 📊 Risk/Reward Ratio: 0.36 (Required: 2.0)
+[2026-02-04 08:21:08] [WARNING] ❌ Trade REJECTED: Risk/Reward ratio too low (0.36 < 2.0)
+[2026-02-04 08:22:10] [INFO] 📊 Daily Stats: 0/2 trades | P&L: $0.00 (0.00%)
+[2026-02-04 08:22:13] [INFO] 🔍 Starting analysis for XAUUSD on M5 timeframe
+[2026-02-04 08:22:13] [INFO] 📈 Signal Analysis Result: SELL | Confidence: 70% | Required: 70%
+[2026-02-04 08:22:13] [INFO] 💡 Signal Reason: SMA10 (5074.06) < SMA20 (5077.00); MACD bearish; TP: 5051.10 (Support: 5051.10), SL: 5085.45 (Resistance: 5085.42)
+[2026-02-04 08:22:13] [INFO] 📊 Technical Indicators: RSI: 32.06, Support: $5051.10, Resistance: $5085.42
+[2026-02-04 08:22:13] [INFO] 🎯 TP/SL Calculation: TP=594 pips, SL=2839 pips
+[2026-02-04 08:22:13] [INFO] 📊 Risk/Reward Ratio: 0.21 (Required: 2.0)
+[2026-02-04 08:22:13] [WARNING] ❌ Trade REJECTED: Risk/Reward ratio too low (0.21 < 2.0)
+[2026-02-04 08:23:13] [INFO] 📊 Daily Stats: 0/2 trades | P&L: $0.00 (0.00%)
+[2026-02-04 08:23:13] [INFO] 🔍 Starting analysis for XAUUSD on M5 timeframe
+[2026-02-04 08:23:13] [INFO] 📈 Signal Analysis Result: SELL | Confidence: 70% | Required: 70%
+[2026-02-04 08:23:13] [INFO] 💡 Signal Reason: SMA10 (5074.18) < SMA20 (5077.06); MACD bearish; TP: 5051.10 (Support: 5051.10), SL: 5085.45 (Resistance: 5085.42)
+[2026-02-04 08:23:13] [INFO] 📊 Technical Indicators: RSI: 32.78, Support: $5051.10, Resistance: $5085.42
+[2026-02-04 08:23:13] [INFO] 🎯 TP/SL Calculation: TP=718 pips, SL=2715 pips
+[2026-02-04 08:23:13] [INFO] 📊 Risk/Reward Ratio: 0.26 (Required: 2.0)
+[2026-02-04 08:23:13] [WARNING] ❌ Trade REJECTED: Risk/Reward ratio too low (0.26 < 2.0)
+[2026-02-04 08:24:14] [INFO] 📊 Daily Stats: 0/2 trades | P&L: $0.00 (0.00%)
+[2026-02-04 08:24:14] [INFO] 🔍 Starting analysis for XAUUSD on M5 timeframe
+[2026-02-04 08:24:14] [INFO] 📈 Signal Analysis Result: SELL | Confidence: 70% | Required: 70%
+[2026-02-04 08:24:14] [INFO] 💡 Signal Reason: SMA10 (5074.00) < SMA20 (5076.97); MACD bearish; TP: 5051.10 (Support: 5051.10), SL: 5085.45 (Resistance: 5085.42)
+[2026-02-04 08:24:14] [INFO] 📊 Technical Indicators: RSI: 31.72, Support: $5051.10, Resistance: $5085.42
+[2026-02-04 08:24:14] [INFO] 🎯 TP/SL Calculation: TP=533 pips, SL=2900 pips
+[2026-02-04 08:24:14] [INFO] 📊 Risk/Reward Ratio: 0.18 (Required: 2.0)
+[2026-02-04 08:24:14] [WARNING] ❌ Trade REJECTED: Risk/Reward ratio too low (0.18 < 2.0)
+[2026-02-04 08:25:14] [INFO] 📊 Daily Stats: 0/2 trades | P&L: $0.00 (0.00%)
+[2026-02-04 08:25:15] [INFO] 🔍 Starting analysis for XAUUSD on M5 timeframe
+[2026-02-04 08:25:15] [INFO] 📈 Signal Analysis Result: SELL | Confidence: 90% | Required: 70%
+[2026-02-04 08:25:15] [INFO] 💡 Signal Reason: SMA10 (5072.19) < SMA20 (5076.09); RSI oversold (28.5); MACD bearish; TP: 5051.10 (Support: 5051.10), SL: 5085.45 (Resistance: 5085.42)
+[2026-02-04 08:25:15] [INFO] 📊 Technical Indicators: RSI: 28.46, Support: $5051.10, Resistance: $5085.42
+[2026-02-04 08:25:15] [INFO] 🎯 TP/SL Calculation: TP=719 pips, SL=2714 pips
+[2026-02-04 08:25:15] [INFO] 📊 Risk/Reward Ratio: 0.26 (Required: 2.0)
+[2026-02-04 08:25:15] [WARNING] ❌ Trade REJECTED: Risk/Reward ratio too low (0.26 < 2.0)
+[2026-02-04 08:26:17] [INFO] 📊 Daily Stats: 0/2 trades | P&L: $0.00 (0.00%)
+[2026-02-04 08:26:21] [INFO] 🔍 Starting analysis for XAUUSD on M5 timeframe
+[2026-02-04 08:26:23] [INFO] 📈 Signal Analysis Result: NEUTRAL | Confidence: 0% | Required: 70%
+[2026-02-04 08:26:23] [INFO] 💡 Signal Reason: Insufficient candlestick data for analysis (need 30, got 0)
+[2026-02-04 08:26:23] [WARNING] ❌ Trade REJECTED: Confidence too low (0% < 70%)
+[2026-02-04 08:27:25] [INFO] 📊 Daily Stats: 0/2 trades | P&L: $0.00 (0.00%)
+[2026-02-04 08:27:30] [INFO] 🔍 Starting analysis for XAUUSD on M5 timeframe
+[2026-02-04 08:27:32] [INFO] 📈 Signal Analysis Result: NEUTRAL | Confidence: 0% | Required: 70%
+[2026-02-04 08:27:32] [INFO] 💡 Signal Reason: Insufficient candlestick data for analysis (need 30, got 0)
+[2026-02-04 08:27:32] [WARNING] ❌ Trade REJECTED: Confidence too low (0% < 70%)
+[2026-02-04 08:28:34] [INFO] 📊 Daily Stats: 0/2 trades | P&L: $0.00 (0.00%)
+[2026-02-04 08:28:38] [INFO] 🔍 Starting analysis for XAUUSD on M5 timeframe
+[2026-02-04 08:28:41] [INFO] 📈 Signal Analysis Result: NEUTRAL | Confidence: 0% | Required: 70%
+[2026-02-04 08:28:41] [INFO] 💡 Signal Reason: Insufficient candlestick data for analysis (need 30, got 0)
+[2026-02-04 08:28:41] [WARNING] ❌ Trade REJECTED: Confidence too low (0% < 70%)
+[2026-02-04 08:29:43] [INFO] 📊 Daily Stats: 0/2 trades | P&L: $0.00 (0.00%)
+[2026-02-04 08:29:47] [INFO] 🔍 Starting analysis for XAUUSD on M5 timeframe
+[2026-02-04 08:29:49] [INFO] 📈 Signal Analysis Result: NEUTRAL | Confidence: 0% | Required: 70%
+[2026-02-04 08:29:49] [INFO] 💡 Signal Reason: Insufficient candlestick data for analysis (need 30, got 0)
+[2026-02-04 08:29:49] [WARNING] ❌ Trade REJECTED: Confidence too low (0% < 70%)
+[2026-02-04 08:30:51] [INFO] 📊 Daily Stats: 0/2 trades | P&L: $0.00 (0.00%)
+[2026-02-04 08:30:56] [INFO] 🔍 Starting analysis for XAUUSD on M5 timeframe
+[2026-02-04 08:30:58] [INFO] 📈 Signal Analysis Result: NEUTRAL | Confidence: 0% | Required: 70%
+[2026-02-04 08:30:58] [INFO] 💡 Signal Reason: Insufficient candlestick data for analysis (need 30, got 0)
+[2026-02-04 08:30:58] [WARNING] ❌ Trade REJECTED: Confidence too low (0% < 70%)
+[2026-02-04 08:32:00] [INFO] 📊 Daily Stats: 0/2 trades | P&L: $0.00 (0.00%)
+[2026-02-04 08:32:04] [INFO] 🔍 Starting analysis for XAUUSD on M5 timeframe
+[2026-02-04 08:32:07] [INFO] 📈 Signal Analysis Result: NEUTRAL | Confidence: 0% | Required: 70%
+[2026-02-04 08:32:07] [INFO] 💡 Signal Reason: Insufficient candlestick data for analysis (need 30, got 0)
+[2026-02-04 08:32:07] [WARNING] ❌ Trade REJECTED: Confidence too low (0% < 70%)
+[2026-02-04 08:33:09] [INFO] 📊 Daily Stats: 0/2 trades | P&L: $0.00 (0.00%)
+[2026-02-04 08:33:13] [INFO] 🔍 Starting analysis for XAUUSD on M5 timeframe
+[2026-02-04 08:33:15] [INFO] 📈 Signal Analysis Result: NEUTRAL | Confidence: 0% | Required: 70%
+[2026-02-04 08:33:15] [INFO] 💡 Signal Reason: Insufficient candlestick data for analysis (need 30, got 0)
+[2026-02-04 08:33:15] [WARNING] ❌ Trade REJECTED: Confidence too low (0% < 70%)
+[2026-02-04 08:34:17] [INFO] 📊 Daily Stats: 0/2 trades | P&L: $0.00 (0.00%)
+[2026-02-04 08:34:22] [INFO] 🔍 Starting analysis for XAUUSD on M5 timeframe
+[2026-02-04 08:34:24] [INFO] 📈 Signal Analysis Result: NEUTRAL | Confidence: 0% | Required: 70%
+[2026-02-04 08:34:24] [INFO] 💡 Signal Reason: Insufficient candlestick data for analysis (need 30, got 0)
+[2026-02-04 08:34:24] [WARNING] ❌ Trade REJECTED: Confidence too low (0% < 70%)
+[2026-02-04 08:35:26] [INFO] 📊 Daily Stats: 0/2 trades | P&L: $0.00 (0.00%)
+[2026-02-04 08:35:30] [INFO] 🔍 Starting analysis for XAUUSD on M5 timeframe
+[2026-02-04 08:35:32] [INFO] 📈 Signal Analysis Result: NEUTRAL | Confidence: 0% | Required: 70%
+[2026-02-04 08:35:32] [INFO] 💡 Signal Reason: Insufficient candlestick data for analysis (need 30, got 0)
+[2026-02-04 08:35:32] [WARNING] ❌ Trade REJECTED: Confidence too low (0% < 70%)
+[2026-02-04 08:36:35] [INFO] 📊 Daily Stats: 0/2 trades | P&L: $0.00 (0.00%)
+[2026-02-04 08:36:39] [INFO] 🔍 Starting analysis for XAUUSD on M5 timeframe
+[2026-02-04 08:36:41] [INFO] 📈 Signal Analysis Result: NEUTRAL | Confidence: 0% | Required: 70%
+[2026-02-04 08:36:41] [INFO] 💡 Signal Reason: Insufficient candlestick data for analysis (need 30, got 0)
+[2026-02-04 08:36:41] [WARNING] ❌ Trade REJECTED: Confidence too low (0% < 70%)
+[2026-02-04 08:37:43] [INFO] 📊 Daily Stats: 0/2 trades | P&L: $0.00 (0.00%)
+[2026-02-04 08:37:47] [INFO] 🔍 Starting analysis for XAUUSD on M5 timeframe
+[2026-02-04 08:37:50] [INFO] 📈 Signal Analysis Result: NEUTRAL | Confidence: 0% | Required: 70%
+[2026-02-04 08:37:50] [INFO] 💡 Signal Reason: Insufficient candlestick data for analysis (need 30, got 0)
+[2026-02-04 08:37:50] [WARNING] ❌ Trade REJECTED: Confidence too low (0% < 70%)
+[2026-02-04 08:38:52] [INFO] 📊 Daily Stats: 0/2 trades | P&L: $0.00 (0.00%)
+[2026-02-04 08:38:56] [INFO] 🔍 Starting analysis for XAUUSD on M5 timeframe
+[2026-02-04 08:38:58] [INFO] 📈 Signal Analysis Result: NEUTRAL | Confidence: 0% | Required: 70%
+[2026-02-04 08:38:58] [INFO] 💡 Signal Reason: Insufficient candlestick data for analysis (need 30, got 0)
+[2026-02-04 08:38:58] [WARNING] ❌ Trade REJECTED: Confidence too low (0% < 70%)
+[2026-02-04 08:40:00] [INFO] 📊 Daily Stats: 0/2 trades | P&L: $0.00 (0.00%)
+[2026-02-04 08:40:05] [INFO] 🔍 Starting analysis for XAUUSD on M5 timeframe
+[2026-02-04 08:40:07] [INFO] 📈 Signal Analysis Result: NEUTRAL | Confidence: 0% | Required: 70%
+[2026-02-04 08:40:07] [INFO] 💡 Signal Reason: Insufficient candlestick data for analysis (need 30, got 0)
+[2026-02-04 08:40:07] [WARNING] ❌ Trade REJECTED: Confidence too low (0% < 70%)
+[2026-02-04 08:41:09] [INFO] 📊 Daily Stats: 0/2 trades | P&L: $0.00 (0.00%)
+[2026-02-04 08:41:13] [INFO] 🔍 Starting analysis for XAUUSD on M5 timeframe
+[2026-02-04 08:41:15] [INFO] 📈 Signal Analysis Result: NEUTRAL | Confidence: 0% | Required: 70%
+[2026-02-04 08:41:15] [INFO] 💡 Signal Reason: Insufficient candlestick data for analysis (need 30, got 0)
+[2026-02-04 08:41:15] [WARNING] ❌ Trade REJECTED: Confidence too low (0% < 70%)

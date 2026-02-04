@@ -223,6 +223,22 @@ def mt5_history():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
+@app.route('/api/mt5/tick', methods=['GET'])
+def mt5_tick():
+    """Get MT5 tick/price for a symbol - tries bridge first"""
+    try:
+        import requests
+        symbol = request.args.get('symbol', 'XAUUSD')
+        try:
+            bridge_response = requests.get(f'http://localhost:5002/tick/{symbol}', timeout=5)
+            if bridge_response.status_code == 200:
+                return jsonify(bridge_response.json())
+        except:
+            pass
+        return jsonify({'error': 'Unable to connect to MT5'}), 503
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
 @app.route('/api/mt5/candles', methods=['GET'])
 def mt5_candles():
     """Get MT5 candlestick/OHLC data - tries bridge first"""
@@ -827,6 +843,288 @@ def configure_discord():
             return jsonify({'error': 'Failed to configure Discord'}), 500
     except Exception as e:
         return jsonify({'error': str(e), 'success': False}), 500
+
+# Live Trader endpoints
+live_trader_process = None
+
+@app.route('/api/live-trader/start', methods=['POST'])
+def start_live_trader():
+    """Start live trader"""
+    global live_trader_process
+    try:
+        import subprocess
+        import os
+        
+        data = request.json or {}
+        config_type = data.get('config_type', 'moderate')
+        interval = data.get('interval', 60)
+        
+        # Stop existing process if running
+        if live_trader_process and live_trader_process.poll() is None:
+            live_trader_process.terminate()
+            live_trader_process.wait()
+        
+        # Start new process
+        script_path = os.path.join(os.path.dirname(__file__), 'LIVE', 'live_trader.py')
+        live_trader_process = subprocess.Popen(
+            ['python3', script_path, '--config', config_type, '--interval', str(interval)],
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            text=True
+        )
+        
+        return jsonify({
+            'success': True,
+            'message': 'Live trader started',
+            'pid': live_trader_process.pid
+        })
+    except Exception as e:
+        return jsonify({'error': str(e), 'success': False}), 500
+
+@app.route('/api/live-trader/stop', methods=['POST'])
+def stop_live_trader():
+    """Stop live trader"""
+    global live_trader_process
+    try:
+        if live_trader_process and live_trader_process.poll() is None:
+            live_trader_process.terminate()
+            live_trader_process.wait()
+            live_trader_process = None
+            return jsonify({'success': True, 'message': 'Live trader stopped'})
+        else:
+            return jsonify({'success': True, 'message': 'Live trader was not running'})
+    except Exception as e:
+        return jsonify({'error': str(e), 'success': False}), 500
+
+@app.route('/api/live-trader/status', methods=['GET'])
+def live_trader_status():
+    """Get live trader status"""
+    global live_trader_process
+    try:
+        is_running = live_trader_process is not None and live_trader_process.poll() is None
+        return jsonify({
+            'running': is_running,
+            'pid': live_trader_process.pid if is_running else None
+        })
+    except Exception as e:
+        return jsonify({'error': str(e), 'running': False}), 500
+
+@app.route('/api/live-trader/logs', methods=['GET'])
+def live_trader_mt5_logs():
+    """Get MT5 EA logs"""
+    try:
+        import requests
+        bridge_response = requests.get('http://localhost:5002/logs', timeout=5)
+        if bridge_response.status_code == 200:
+            return jsonify(bridge_response.json())
+        else:
+            return jsonify({'logs': [], 'error': 'Failed to get logs'}), 500
+    except Exception as e:
+        return jsonify({'logs': [], 'error': str(e)}), 500
+
+@app.route('/api/live-trader/platform-logs', methods=['GET'])
+def live_trader_platform_logs():
+    """Get platform logs from live trader"""
+    try:
+        import os
+        log_file = os.path.join(os.path.dirname(__file__), 'LIVE', 'platform_logs.txt')
+        
+        if not os.path.exists(log_file):
+            return jsonify({'logs': [], 'message': 'No platform logs found yet'})
+        
+        lines_to_read = request.args.get('lines', type=int, default=100)
+        
+        with open(log_file, 'r', encoding='utf-8', errors='ignore') as f:
+            all_lines = f.readlines()
+        
+        # Get last N lines and filter empty lines
+        logs = all_lines[-lines_to_read:] if len(all_lines) > lines_to_read else all_lines
+        
+        parsed_logs = []
+        for log_line in logs:
+            log_line = log_line.strip()
+            if log_line:  # Only add non-empty lines
+                parsed_logs.append({
+                    'message': log_line
+                })
+        
+        return jsonify({
+            'logs': parsed_logs,
+            'total_lines': len(all_lines),
+            'returned_lines': len(parsed_logs)
+        })
+    except Exception as e:
+        return jsonify({'logs': [], 'error': str(e)}), 500
+
+@app.route('/api/live-trader/current-signal', methods=['GET'])
+def live_trader_current_signal():
+    """Get current signal without placing trade"""
+    try:
+        from LIVE.live_trader import LiveTrader
+        
+        config_type = request.args.get('config_type', 'moderate')
+        custom_config = {}
+        
+        # Get optional config from query params
+        if request.args.get('timeframe'):
+            custom_config['timeframe'] = request.args.get('timeframe')
+        if request.args.get('symbol'):
+            custom_config['symbol'] = request.args.get('symbol')
+        
+        trader = LiveTrader(config_type=config_type, custom_config=custom_config if custom_config else None)
+        signal_data = trader.get_current_signal()
+        
+        return jsonify(signal_data)
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        return jsonify({
+            'error': str(e),
+            'signal': 'NEUTRAL',
+            'confidence': 0
+        }), 500
+
+@app.route('/api/live-trader/market-status', methods=['GET'])
+def live_trader_market_status():
+    """Get market status (open/closed)"""
+    try:
+        from market_hours import MarketHours
+        import requests
+        
+        market_hours = MarketHours()
+        market_status = market_hours.get_market_status()
+        
+        # Check if any market is open
+        any_open = any(info['is_open'] for info in market_status.values())
+        
+        # Check MT5 bridge connection
+        mt5_connected = False
+        try:
+            bridge_response = requests.get('http://localhost:5002/health', timeout=2)
+            mt5_connected = bridge_response.status_code == 200
+        except:
+            pass
+        
+        # Check MT5 EA status
+        ea_running = False
+        try:
+            account_response = requests.get('http://localhost:5002/account', timeout=2)
+            ea_running = account_response.status_code == 200
+        except:
+            pass
+        
+        return jsonify({
+            'market_open': any_open,
+            'mt5_bridge_connected': mt5_connected,
+            'mt5_ea_running': ea_running,
+            'market_sessions': market_status,
+            'overlaps': market_hours.get_overlap_periods()
+        })
+    except Exception as e:
+        return jsonify({
+            'error': str(e),
+            'market_open': False,
+            'mt5_bridge_connected': False,
+            'mt5_ea_running': False
+        }), 500
+
+@app.route('/api/live-trader/stats', methods=['GET'])
+def live_trader_stats():
+    """Get live trader statistics with risk metrics"""
+    try:
+        from LIVE.risk_manager import RiskManager
+        import requests
+        
+        # Get account balance and margin info from MT5 bridge
+        account_balance = 0.0
+        equity = 0.0
+        margin_used = 0.0
+        free_margin = 0.0
+        margin_level = 0.0
+        
+        try:
+            bridge_response = requests.get('http://localhost:5002/account', timeout=2)
+            if bridge_response.status_code == 200:
+                bridge_data = bridge_response.json()
+                if not bridge_data.get('error'):
+                    account_balance = float(bridge_data.get('balance', 0))
+                    equity = float(bridge_data.get('equity', account_balance))
+                    margin_used = float(bridge_data.get('margin', 0))
+                    free_margin = float(bridge_data.get('free_margin', account_balance))
+                    margin_level = float(bridge_data.get('margin_level', 0))
+        except Exception as e:
+            print(f"Warning: Could not get account balance from MT5: {e}")
+        
+        # Get positions for exposure calculation
+        total_exposure = 0.0
+        try:
+            positions_response = requests.get('http://localhost:5002/positions', timeout=2)
+            if positions_response.status_code == 200:
+                positions_data = positions_response.json()
+                positions = positions_data.get('positions', [])
+                # Calculate total exposure (volume * current price)
+                for pos in positions:
+                    volume = float(pos.get('volume', 0))
+                    price = float(pos.get('price_current', 0))
+                    total_exposure += volume * price
+        except:
+            pass
+        
+        # Get stats from risk manager
+        risk_manager = RiskManager()
+        stats = risk_manager.get_risk_summary(account_balance)
+        
+        # Calculate drawdown
+        starting_balance = stats.get('starting_balance', account_balance)
+        if starting_balance > 0:
+            current_drawdown = starting_balance - equity
+            current_drawdown_percent = (current_drawdown / starting_balance) * 100 if starting_balance > 0 else 0
+            
+            # Get max drawdown from risk manager
+            max_drawdown = stats.get('max_drawdown', 0)
+            max_drawdown_percent = stats.get('max_drawdown_percent', 0)
+        else:
+            current_drawdown = 0
+            current_drawdown_percent = 0
+            max_drawdown = 0
+            max_drawdown_percent = 0
+        
+        # Add risk metrics to stats
+        stats.update({
+            'max_drawdown': round(max_drawdown, 2),
+            'current_drawdown': round(current_drawdown, 2),
+            'drawdown_percent': round(current_drawdown_percent, 2),
+            'max_drawdown_percent': round(max_drawdown_percent, 2),
+            'margin_used': round(margin_used, 2),
+            'free_margin': round(free_margin, 2),
+            'margin_level': round(margin_level, 2),
+            'total_exposure': round(total_exposure, 2),
+            'equity': round(equity, 2)
+        })
+        
+        return jsonify(stats)
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        return jsonify({
+            'error': str(e),
+            'trades_today': 0,
+            'total_pnl': 0.0,
+            'daily_pnl_percent': 0.0,
+            'winning_trades': 0,
+            'losing_trades': 0,
+            'win_rate': 0.0,
+            'current_balance': 0.0,
+            'starting_balance': 0.0,
+            'max_drawdown': 0.0,
+            'current_drawdown': 0.0,
+            'drawdown_percent': 0.0,
+            'margin_used': 0.0,
+            'free_margin': 0.0,
+            'margin_level': 0.0,
+            'total_exposure': 0.0,
+            'equity': 0.0
+        }), 500
 
 if __name__ == '__main__':
     print(f"🚀 Starting AI Trader API Server on port {API_PORT}")
